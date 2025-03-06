@@ -1,104 +1,484 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zheng Zhang - Academic Homepage</title>
-    <style>
-        body {
-            font-family: "Arial", sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f9f9f9;
-            color: #333;
-        }
-        header {
-            background-color: #4CAF50;
-            color: white;
-            padding: 22px;
-            text-align: center;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 2.5em;
-        }
-        header p {
-            font-size: 1.2em;
-            margin-top: 10px;
-        }
-        main {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        section {
-            margin-bottom: 30px;
-        }
-        section h2 {
-            border-bottom: 2px solid #4CAF50;
-            padding-bottom: 5px;
-            margin-bottom: 15px;
-            color: #4CAF50;
-        }
-        footer {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 0.9em;
-            color: #777;
-        }
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        ul li {
-            margin-bottom: 10px;
-            line-height: 1.6;
-        }
-        a {
-            color: #4CAF50;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zheng Zhang | Personal Homepage</title>
+  <style>
+    :root {
+      --primary-color: #1a5276;
+      --secondary-color: #2980b9;
+      --accent-color: #3498db;
+      --text-color: #333;
+      --light-bg: #f8f9fa;
+      --border-color: #e0e0e0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: var(--text-color);
+      background-color: white;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      padding: 60px 0;
+    }
+
+    .header-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .header-content h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    .header-content p {
+      font-size: 1.2rem;
+      margin-bottom: 5px;
+    }
+
+    .contact-info {
+      margin-top: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .contact-info a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .contact-info a:hover {
+      color: #d5d8dc;
+    }
+
+    section {
+      padding: 40px 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    section:last-child {
+      border-bottom: none;
+    }
+
+    h2 {
+      color: var(--primary-color);
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background-color: var(--accent-color);
+    }
+
+    .education-item, .project-item {
+      margin-bottom: 25px;
+    }
+
+    .education-item:last-child, .project-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .education-header, .project-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 5px;
+    }
+
+    .education-header h3, .project-header h3 {
+      font-weight: 600;
+      color: var(--secondary-color);
+    }
+
+    .date {
+      color: #7f8c8d;
+      font-weight: normal;
+    }
+
+    .highlights {
+      list-style-type: disc;
+      padding-left: 20px;
+      margin-top: 10px;
+    }
+
+    .highlights li {
+      margin-bottom: 5px;
+    }
+
+    .publication-item {
+      margin-bottom: 20px;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .publication-item:before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--accent-color);
+    }
+
+    .publication-authors {
+      margin-bottom: 5px;
+    }
+
+    .author-name {
+      font-weight: bold;
+      text-decoration: underline;
+    }
+
+    .publication-title {
+      font-style: italic;
+      margin-bottom: 5px;
+    }
+
+    .publication-journal {
+      font-weight: bold;
+    }
+
+    .publication-info {
+      color: #7f8c8d;
+    }
+
+    .awards-list {
+      list-style-type: disc;
+      padding-left: 20px;
+    }
+
+    .awards-list li {
+      margin-bottom: 10px;
+    }
+
+    .additional-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .info-item {
+      margin-bottom: 20px;
+    }
+
+    .info-item h3 {
+      color: var(--secondary-color);
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+    }
+
+    footer {
+      background-color: var(--light-bg);
+      text-align: center;
+      padding: 20px 0;
+      color: #7f8c8d;
+      font-size: 0.9rem;
+    }
+
+    .publication-note {
+      font-style: italic;
+      margin-bottom: 20px;
+      padding: 15px;
+      background-color: var(--light-bg);
+      border-radius: 5px;
+    }
+
+    .subsection-title {
+      color: var(--secondary-color);
+      margin: 20px 0 15px;
+      font-size: 1.3rem;
+    }
+
+    @media (max-width: 768px) {
+      .education-header, .project-header {
+        flex-direction: column;
+      }
+
+      .date {
+        margin-top: 5px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header>
+  <header>
+    <div class="container">
+      <div class="header-content">
         <h1>Zheng Zhang</h1>
-        <p>Master's Student | Time Series Researcher </p>
-    </header>
-    <main>
-        <section>
-            <h2>About Me</h2>
-            <p>Hello! My name is Zheng Zhang, and I am a master's student at the Software College of Dalian University of Technology. My research focuses on exploring intrinsic patterns in time series, including modeling incomplete data and developing advanced imputation techniques. I am particularly interested in applying machine learning methods like graph neural networks and diffusion probabilistic models to solve real-world problems.</p>
-        </section>
-        <section>
-            <h2>Publications</h2>
-            <ul>
-                <li>
-                    <strong>Imputation *********</strong><br>
-                    Published in [Journal Name], 2024. 
-                    <a href="https://doi.org/example" target="_blank">Read more</a>
-                </li>
-                <li>
-                    <strong>Paper 2 Title (Under Review)</strong><br>
-                    Submitted to [Q1 Journal Name], 2024. <br>
-                    Research focuses on [brief description].
-                </li>
-                <li>
-                    <strong>Paper 3 Title (Major Revision)</strong><br>
-                    Revision for [Q2 Journal Name], 2024. <br>
-                    Research focuses on [brief description].
-                </li>
-            </ul>
-        </section>
-    </main>
-    <footer>
-        <p>© 2024 Zheng Zhang. All rights reserved. | <a href="mailto:your-email@example.com">Contact Me</a></p>
-    </footer>
+        <p>Master of Software Engineering</p>
+        <p>Dalian University of Technology</p>
+        <div class="contact-info">
+          <p>Dalian, China</p>
+          <p>|</p>
+          <a href="mailto:zhangzheng@mail.dlut.edu.cn">zhangzheng@mail.dlut.edu.cn</a>
+          <p>|</p>
+          <a href="tel:+8615971634773">+86 15971634773</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="education">
+      <h2>Education</h2>
+
+      <div class="education-item">
+        <div class="education-header">
+          <h3>Dalian University of Technology</h3>
+          <span class="date">Sep. 2022 - Jun. 2025</span>
+        </div>
+        <p>Master of Software Engineering</p>
+        <ul class="highlights">
+          <li>Score: 95.0, GPA: 3.99/4.0 (Ranked 1/98, Top 1%)</li>
+        </ul>
+      </div>
+
+      <div class="education-item">
+        <div class="education-header">
+          <h3>Dalian University of Technology</h3>
+          <span class="date">Sep. 2018 - Jun. 2022</span>
+        </div>
+        <p>Bachelor of Digital Media Technology</p>
+        <ul class="highlights">
+          <li>Score: 88.8, GPA: 3.89/5.0 (Ranked 14/101, Top 14%)</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="publications">
+      <h2>Publications</h2>
+
+      <div class="publication-note">
+        The first four and the last two publications were conducted under the supervision of Profs. Xiaochen Lai and Liyong Zhang, with Zheng Zhang as the first student author responsible for experimental implementation and manuscript writing. The fifth publication was primarily finished by Yihan Wen, with Zheng Zhang assisting in initial drafting and revisions.
+      </div>
+
+      <div class="subsection-title">Published Articles</div>
+
+      <div class="publication-item">
+        <div class="publication-authors">
+          <span class="author-name">Zheng Zhang</span>*, Xiaoming Yan*, et al.
+        </div>
+        <div class="publication-title">
+          "Fuzzy neuron modeling of incomplete data for missing value imputation" (2024)
+        </div>
+        <div class="publication-journal">Information Sciences</div>
+        <div class="publication-info">
+          IF=8.1, JCR Q1, Co-first author
+        </div>
+        <div>
+          DOI: <a href="https://doi.org/10.1016/j.ins.2023.120065">10.1016/j.ins.2023.120065</a>
+        </div>
+      </div>
+
+      <div class="publication-item">
+        <div class="publication-authors">
+          Xiaochen Lai, <span class="author-name">Zheng Zhang</span>, et al.
+        </div>
+        <div class="publication-title">
+          "Dynamic graph-based bilateral recurrent imputation network for multivariate time series" (2025)
+        </div>
+        <div class="publication-journal">Neural Networks</div>
+        <div class="publication-info">
+          IF=6.0, JCR Q1, Student first author
+        </div>
+        <div>
+          DOI: <a href="https://doi.org/10.1016/j.neunet.2025.107298">10.1016/j.neunet.2025.107298</a>
+        </div>
+      </div>
+
+      <div class="publication-item">
+        <div class="publication-authors">
+          Xiaochen Lai, <span class="author-name">Zheng Zhang</span>, et al.
+        </div>
+        <div class="publication-title">
+          "Incomplete data modeling based on alternate update of clustering and autoencoder for missing value imputation" (2024)
+        </div>
+        <div class="publication-journal">Neural Computing and Applications</div>
+        <div class="publication-info">
+          IF=4.5, JCR Q2, Student first author
+        </div>
+        <div>
+          DOI: <a href="https://doi.org/10.1007/s00521-024-10646-9">10.1007/s00521-024-10646-9</a>
+        </div>
+      </div>
+
+      <div class="publication-item">
+        <div class="publication-authors">
+          Xiaochen Lai, <span class="author-name">Zheng Zhang</span>, et al.
+        </div>
+        <div class="publication-title">
+          "Tracking-removed neural network with graph information for classification of incomplete data" (2025)
+        </div>
+        <div class="publication-journal">Applied Intelligence</div>
+        <div class="publication-info">
+          IF=3.4, JCR Q2, Student first author
+        </div>
+        <div>
+          DOI: <a href="https://doi.org/10.1007/s10489-024-06031-7">10.1007/s10489-024-06031-7</a>
+        </div>
+      </div>
+
+      <div class="publication-item">
+        <div class="publication-authors">
+          Yihan Wen*, <span class="author-name">Zheng Zhang</span>*, et al.
+        </div>
+        <div class="publication-title">
+          "SAW: Semantic-aware WebRTC transmission using diffusion-based scalable video coding" (2024)
+        </div>
+        <div class="publication-journal">IEEE Internet of Things Journal</div>
+        <div class="publication-info">
+          IF=10.6, JCR Q1, Co-first author
+        </div>
+        <div>
+          DOI: <a href="https://doi.org/10.1109/JIOT.2024.3486725">10.1109/JIOT.2024.3486725</a>
+        </div>
+      </div>
+
+      <div class="subsection-title">Under Review</div>
+
+      <div class="publication-item">
+        <div class="publication-authors">
+          <span class="author-name">Zheng Zhang</span>, Xiaochen Lai, Liyong Zhang, et al.
+        </div>
+        <div class="publication-title">
+          "Adaptive learning-based dynamic segment-based model for recovery of missing values caused by sensor fault and its application in aeroengines" (Under Review)
+        </div>
+        <div class="publication-journal">IEEE Transactions on Instrumentation and Measurement</div>
+        <div class="publication-info">
+          IF=5.6, JCR Q2, First author
+        </div>
+      </div>
+
+      <div class="publication-item">
+        <div class="publication-authors">
+          Xiaochen Lai, <span class="author-name">Zheng Zhang</span>, Liyong Zhang, et al.
+        </div>
+        <div class="publication-title">
+          "Incomplete multivariate time series forecasting with dynamic attention graph network" (Under Review)
+        </div>
+        <div class="publication-journal">IEEE Transactions on Systems, Man, and Cybernetics</div>
+        <div class="publication-info">
+          IF=8.6, JCR Q1, Student first author
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+
+      <div class="project-item">
+        <div class="project-header">
+          <h3>Missing Value Imputation for Tabular Data</h3>
+          <span class="date">Apr. 2022 - Apr. 2024</span>
+        </div>
+        <p>Design a deep learning model to uncover the inherent relationships within incomplete tabular data for imputation, such as the similarity between samples and the correlations between variables. Works include:</p>
+        <ul class="highlights">
+          <li>Propose a tracking-removed autoencoder model combined with a fuzzy framework for missing value imputation. (Published in <em>Information Sciences</em>, IF=8.1, first author)</li>
+          <li>Propose a deep learning architecture for collaborative optimization of fuzzy clustering and intra-class attribute regression for missing value imputation. (Published in <em>Neural Computing and Applications</em>, IF=4.5, Student first author)</li>
+          <li>Propose a multi-task learning model combining graph neural networks and tracking-removed autoencoders to solve the cumulative errors introduced by the "imputation before classification" in the data classification task. (Published in <em>Applied Intelligence</em>, IF=3.4, Student first author)</li>
+        </ul>
+      </div>
+
+      <div class="project-item">
+        <div class="project-header">
+          <h3>Adaptive Learning-based Time Series Recovery</h3>
+          <span class="date">Nov. 2023 - Feb. 2025</span>
+        </div>
+        <p>Propose a dynamic graph neural network model to address the issues caused by incomplete multivariate time series, including high-accuracy missing value imputation, prediction models resistant to missing values, and a lightweight dynamic graph neural network for imputation. Core Works:</p>
+        <ul class="highlights">
+          <li>Propose a dynamic graph convolutional network-based imputation model, which combines the advantages of recurrent neural networks and graph neural networks to achieve advanced imputation performance. (Published in <em>Neural Networks</em>, IF=6.0, Student first author)</li>
+          <li>Propose a dynamic graph attention network-based prediction model, which employs only the available values for prediction, addressing the propagation errors in the traditional 'impute-then-predict' approaches. (Under review in <em>IEEE Trans. Systems, Man, and Cybernetics</em>, IF=8.6)</li>
+          <li>Propose a lightweight dynamic graph convolutional network for missing value imputation, which significantly reduces memory consumption and processes more time steps compared to existing advanced graph neural networks. (Under review in <em>IEEE Trans. Instrumentation & Measurement</em>, IF=5.6)</li>
+        </ul>
+      </div>
+
+      <div class="project-item">
+        <div class="project-header">
+          <h3>Diffusion-based Scalable Video Coding</h3>
+          <span class="date">Feb. 2024 - Oct. 2024</span>
+        </div>
+        <p>Design a real-time communication system that adaptively adjusts the resources required for video compression and restoration based on the network environment, ensuring stable and efficient communication.</p>
+        <ul class="highlights">
+          <li>Design a three-layer video encoding architecture: The first layer performs semantic information down sampling, using a diffusion-based super-resolution method in the decoder to enhance video quality. The second layer discards frames with minimal motion and applies adaptive compression to preserve high-quality video. The third layer allocates additional resources to deliver the highest quality video. (Published in <em>IEEE IoT Journal</em>, IF=10.6, Co-first author)</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="awards">
+      <h2>Awards and Honors</h2>
+      <ul class="awards-list">
+        <li><strong>National Scholarship for Postgraduate Students</strong> (Top 1%), 2024</li>
+        <li>First-Class Academic Scholarship for Postgraduate Students of Dalian University of Technology (Around the top 10%), 2024</li>
+        <li>First-Class Grant for Postgraduate Students of Dalian University of Technology (Around the top 10%), 2024</li>
+        <li>Outstanding Postgraduate for Postgraduate Students of Dalian University of Technology (Top 10%), 2023</li>
+        <li>First-Class Scholarship for Academic Excellence of Dalian University of Technology (Top 5%), 2021</li>
+        <li>Science and Technology Innovation Scholarship of Dalian University of Technology (Top 4%), 2021</li>
+        <li><strong>Second Prize in the National College Mathematics Competition</strong> (Top 3%), 2021</li>
+      </ul>
+    </section>
+
+    <section id="additional-info">
+      <h2>Additional Information</h2>
+      <div class="additional-info">
+        <div class="info-item">
+          <h3>Programming</h3>
+          <p>Python (PyTorch/TensorFlow), MATLAB, LaTeX</p>
+        </div>
+
+        <div class="info-item">
+          <h3>Mathematics</h3>
+          <p>Calculus1 (98/100), Calculus2 (99/100), Linear Algebra and Analytic Geometry (97/100), Discrete Mathematics (99/100), Matrix and Numerical Analysis (97/100), Optimization method (98/100), Mathematics Section of the National College Entrance Examination (148/150, National Average Score 78), National College Math Competition Second Prize (Ranked 13/386 in DUT, Top 3%)</p>
+        </div>
+
+        <div class="info-item">
+          <h3>Tools</h3>
+          <p>Git, VScode, PyCharm, Latex, Zotero, Word, Powerpoint, Excel, Overleaf, ChatGPT, Notion</p>
+        </div>
+
+        <div class="info-item">
+          <h3>Language</h3>
+          <p>IELTS 6.5 (L6.0/R7.0/W6.0/S6.0), Proficient in writing English journal articles</p>
+        </div>
+
+        <div class="info-item">
+          <h3>Deep Learning Skills</h3>
+          <p>Graph neural network, Diffusion model, Generative adversarial network, Transformer, Recurrent neural network, Autoencoder</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Zheng Zhang. All rights reserved.</p>
+    </div>
+  </footer>
 </body>
 </html>
